@@ -5,10 +5,11 @@
  * 
  * My solution: Time: O(n^2); Space: O(1)
  * 
+ * Testing on Github
  */
 
 public class LongestSubstringWithoutRepeatingCharacters {
-	public int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstring(String s) {
         int maxLen = 0;
         int start = 0;
         int end = 0;
