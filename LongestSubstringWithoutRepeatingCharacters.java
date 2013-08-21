@@ -5,7 +5,6 @@
  * 
  * My solution: Time: O(n^2); Space: O(1)
  * 
- * Testing on Github
  */
 
 public class LongestSubstringWithoutRepeatingCharacters {
