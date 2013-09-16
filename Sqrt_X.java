@@ -2,8 +2,8 @@
  * Implement int sqrt(int x).
  * Compute and return the square root of x.
  * 
- * @author ÃÏ“‚
- *
+ * @author Josh Luo
+ * 
  */
 public class Sqrt_X {
 	/*
