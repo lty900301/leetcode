@@ -13,7 +13,7 @@
  */
 
 public class LongestSubstringWithoutRepeatingCharacters {
-    public static int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstring(String s) {
         int maxLen = 0;
         int start = 0;
         int end = 0;
@@ -36,9 +36,5 @@ public class LongestSubstringWithoutRepeatingCharacters {
         	end++;
         }
         return Math.max(end - start, maxLen);
-    }
-    
-    public static void main(String args[]){
-    	System.out.println(lengthOfLongestSubstring("qopubjguxhxdipfzwswybgfylqvjzhar"));
     }
 }
