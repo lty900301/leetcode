@@ -1,12 +1,17 @@
+import java.util.*;
+
 /**
+ * Reverse Integer
+ * 
  * Reverse digits of an integer.
  * 
  * Example1: x = 123, return 321
  * Example2: x = -123, return -321
  * 
- * @author XYuser
+ * @author Josh Luo
  *
  */
+
 /**
  * Have you thought about this?
  * Here are some good questions to ask before coding. Bonus points for you if you have 
@@ -23,7 +28,6 @@
  * @author leetCode
  *
  */
-import java.util.*;
 
 public class ReverseInteger {
 	public int reverse(int x) {

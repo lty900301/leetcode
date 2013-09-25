@@ -1,11 +1,13 @@
 /**
  * Implement strStr()
+ * 
  * Returns a pointer to the first occurrence of needle in haystack, or null if needle is not part of haystack.
  * 
  * @author Josh Luo
  *
  * For each char in haystack, match the whole needle string. O(m * n).
  */
+
 public class Implement_strStr {
 	public String strStr(String haystack, String needle) {
         // Start typing your Java solution below

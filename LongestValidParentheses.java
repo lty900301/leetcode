@@ -1,6 +1,8 @@
 import java.util.Stack;
 
 /**
+ * Longest Valid Parantheses
+ * 
  * Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) 
  * parentheses substring.
  * 
@@ -11,7 +13,6 @@ import java.util.Stack;
  * @author joshluo
  *
  */
-
 
 public class LongestValidParentheses {
 	public int longestValidParentheses(String s) {

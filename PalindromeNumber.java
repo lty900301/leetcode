@@ -1,7 +1,9 @@
 /**
+ * Palindrome Number
+ * 
  * Determine whether an integer is a palindrome. Do this without extra space.
  * 
- * @author joshluo
+ * @author Josh Luo
  *
  */
 
@@ -22,6 +24,7 @@
  * @author leetcode
  *
  */
+
 public class PalindromeNumber {
 	public boolean isPalindrome(int x) {
         // Start typing your Java solution below

@@ -1,4 +1,6 @@
 /**
+ * ListNode class
+ * 
  * Helper class. This is the definition for singly-linked list, which is used 
  * throughout all the leetcode problems.
  * 

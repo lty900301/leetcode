@@ -1,4 +1,11 @@
-
+/**
+ * Pow(x, n) 
+ * 
+ * Implement pow(x, n).
+ * 
+ * @author Josh Luo
+ *
+ */
 public class Pow_x_n {
 	public double pow(double x, int n) {
 		// Start typing your Java solution below
