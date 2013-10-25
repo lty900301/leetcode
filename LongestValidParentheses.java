@@ -38,4 +38,6 @@ public class LongestValidParentheses {
         }
         return maxLen;
     }
+	
+	public static void main(String args[]){}
 }
