@@ -19,6 +19,7 @@
  * @author Josh Luo
  *
  */
+
 public class ZigZagConversion {
 	public static String convert(String s, int nRows) {
         // Start typing your Java solution below

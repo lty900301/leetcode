@@ -8,6 +8,7 @@
  *
  *
  */
+
 public class LongestPalindromicSubstring {
 	
 	public String longestPalindrome(String s) {
@@ -16,13 +17,15 @@ public class LongestPalindromicSubstring {
         // a single char itself is a palindrome
         String longest = s.substring(0, 1);  
         for (int i = 0; i < n-1; i++) {
+        	// odd
             String p1 = expandAroundCenter(s, i, i);
             if (p1.length() > longest.length())
-            longest = p1;
- 
+            	longest = p1;
+            
+            // even
             String p2 = expandAroundCenter(s, i, i+1);
             if (p2.length() > longest.length())
-            longest = p2;
+            	longest = p2;
         }
         return longest;
     }
@@ -37,7 +40,7 @@ public class LongestPalindromicSubstring {
         return s.substring(l+1, r);
     }
 
-	
+	// Amazing O(n)
 	public String longestPalindrome2(String s) {
 		String T = preProcess(s);
 		int n = T.length();

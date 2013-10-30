@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * Two Sum
  * 
@@ -16,8 +18,6 @@
  * @author Josh Luo
  *
  */
-
-import java.util.*;
 
 public class TwoSum {
 	public int[] twoSum(int[] numbers, int target) {
