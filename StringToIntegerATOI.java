@@ -37,20 +37,16 @@
  *
  */
 public class StringToIntegerATOI {
-	public static int atoi(String str) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
+	public int atoi(String str) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
         if(str.length() == 0) return 0;
         
         //remove all the spaces ahead
-        int index = 0;
-        while(str.charAt(index) == ' '){
-            index++;
-        }
-        str = str.substring(index);
+        str = str.trim();
         
         //remove all the 0s ahead
-        index = 0;
+        int index = 0;
         while(str.charAt(index) == '0'){
             index++;
         }
@@ -60,8 +56,8 @@ public class StringToIntegerATOI {
         int sign = 0;
         if(str.charAt(0) == '-'){
             sign = -1;
-        } else if(str.charAt(0) == '+' || (str.charAt(0) >= '1' 
-        		&& str.charAt(0) <= '9')){
+        } else if(str.charAt(0) == '+' || (str.charAt(0) >= '1'
+                        && str.charAt(0) <= '9')){
             sign = 1;
         } else {
             sign = 0;
@@ -77,7 +73,7 @@ public class StringToIntegerATOI {
         
         //find the valid number
         index = 0;
-        while(index < str.length() && 
+        while(index < str.length() &&
             str.charAt(index) >= '0' && str.charAt(index) <= '9'){
             index++;
         }
@@ -86,20 +82,20 @@ public class StringToIntegerATOI {
         //convert string to integer
         if(str.length() > 10){
             if(sign > 0){
-                return ~0 ^ (1 << 31);
+                return Integer.MAX_VALUE;
             } else if (sign < 0){
-                return 1 << 31;
+                return Integer.MIN_VALUE;
             }
         }
         int num = 0;
         int power = 1;
         while(str.length() > 0){
             int addNum = (str.charAt(str.length() - 1) - '0') * power;
-            if(((~0 ^ (1 << 31)) - num) < addNum){
+            if(Integer.MAX_VALUE - num < addNum){
                 if(sign > 0){
-                    num = ~0 ^ (1 << 31);
+                    num = Integer.MAX_VALUE;
                 } else if (sign < 0){
-                    num = 1 << 31;
+                    num = Integer.MIN_VALUE;
                 }
                 break;
             }
