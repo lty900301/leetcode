@@ -27,15 +27,11 @@ public class Combinations {
 	public ArrayList<ArrayList<Integer>> combine(int n, int k) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
-        if(k == 0 || n < k) return new ArrayList<ArrayList<Integer>>();
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-        if(k == 1) {
-            while(n > 0) {
-                ArrayList<Integer> subComb = new ArrayList<Integer>();
-                subComb.add(n);
-                res.add(subComb);
-                n--;
-            }
+        if(n < k) return res;
+        if(k == 0) {
+            res.add(new ArrayList<Integer>());
+            return res;
         }
         while(n > 0) {
             ArrayList<ArrayList<Integer>> comb = combine(n - 1, k - 1);

@@ -91,11 +91,11 @@ public class StringToIntegerATOI {
         int power = 1;
         while(str.length() > 0){
             int addNum = (str.charAt(str.length() - 1) - '0') * power;
-            if(Integer.MAX_VALUE - num < addNum){
+            if(((~0 ^ (1 << 31)) - num) < addNum){
                 if(sign > 0){
-                    num = Integer.MAX_VALUE;
+                    num = ~0 ^ (1 << 31);
                 } else if (sign < 0){
-                    num = Integer.MIN_VALUE;
+                    num = 1 << 31;
                 }
                 break;
             }

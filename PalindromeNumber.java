@@ -27,8 +27,8 @@
 
 public class PalindromeNumber {
 	public boolean isPalindrome(int x) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
         if(x < 0) return false;
         else if(x < 10) return true;
         

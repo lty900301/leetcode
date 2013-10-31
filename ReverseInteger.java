@@ -31,8 +31,8 @@ import java.util.Stack;
 
 public class ReverseInteger {
 	public int reverse(int x) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
         if(x == 0) return x;
         int sign = (x < 0)? -1 : 1;
         return sign * reversePos(Math.abs(x));

@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 
 public class PalindromePartitioning {
-	public static ArrayList<ArrayList<String>> partition(String s) {
+	public ArrayList<ArrayList<String>> partition(String s) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
 		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
@@ -27,10 +27,9 @@ public class PalindromePartitioning {
 		return partition(s, temp);
     }
 	
-	public static ArrayList<ArrayList<String>> partition(String s, ArrayList<String> prev) {
-        // IMPORTANT: Please reset any member data you declared, as
-        // the same Solution instance will be reused for each test case.
+	public ArrayList<ArrayList<String>> partition(String s, ArrayList<String> prev) {
 		ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+		
 		if(s.isEmpty()) {
 			result.add(prev);
 			return result;
@@ -48,8 +47,8 @@ public class PalindromePartitioning {
 		}
 		return result;
     }
-	
-	public static boolean isPalindrome(String s) {
+    
+    public boolean isPalindrome(String s) {
 		if(s.length() == 0) return false;
 		int start = 0, end = s.length() - 1;
 		while(start <= end) {
@@ -58,9 +57,5 @@ public class PalindromePartitioning {
 			end--;
 		}
 		return true;
-	}
-	
-	public static void main(String args[]) {
-		System.out.println(partition("abbcacbba"));
 	}
 }

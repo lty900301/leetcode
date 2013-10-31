@@ -21,9 +21,9 @@
  */
 
 public class ZigZagConversion {
-	public static String convert(String s, int nRows) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
+	public String convert(String s, int nRows) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
         if(nRows == 0 || s.equals("")) return "";
         if(nRows == 1) return s;
         int col = (s.length() / (2 * nRows - 2) + 1) * 2;
@@ -38,12 +38,12 @@ public class ZigZagConversion {
         int index = 0;
         while(col < matrix[0].length && index < s.length()){
             if(col % 2 == 1){
-            	if(matrix.length > 2){
-            		int row = matrix.length - 2;
-            		while(row > 0 && index < s.length()){
-            			matrix[row--][col] = s.charAt(index++);
-            		}
-            	}
+                if(matrix.length > 2){
+                    int row = matrix.length - 2;
+                    while(row > 0 && index < s.length()){
+                        matrix[row--][col] = s.charAt(index++);
+                    }
+                }
             } else {
                 int row = 0;
                 while(row < matrix.length && index < s.length()){

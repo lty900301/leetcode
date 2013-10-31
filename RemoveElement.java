@@ -16,19 +16,14 @@ public class RemoveElement {
 	public int removeElement(int[] A, int elem) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
-        
-        int index = 0;
-        for(int i = 0; i < A.length; i++) {
-            if(A[i] != elem) {
-                A[index] = A[i];
-                index++;
+        int i = 0, j = 0;
+        while(i < A.length) {
+            if(A[i] == elem) {
+                i++;
+                continue;
             }
+            if(i < A.length) A[j++] = A[i++];
         }
-        int[] backup = A;
-        A = new int[index];
-        for(int i = 0; i < A.length; i++) {
-            A[i] = backup[i];
-        }
-        return A.length;
+        return j;
     }
 }
