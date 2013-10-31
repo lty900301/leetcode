@@ -82,7 +82,7 @@ public class LongestPalindromicSubstring {
 	if (n == 0) return "^$";
 	String ret = "^";
 	for (int i = 0; i < n; i++)
-		ret += "#" + s.substring(i, 1);
+		ret += "#" + s.substring(i, i+1);
 	ret += "#$";
 	return ret;
 	}
