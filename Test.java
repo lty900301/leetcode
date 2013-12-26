@@ -1,7 +1,19 @@
+import java.util.Arrays;
+
 
 public class Test {
 	public static void main(String args[]) {
-		reverseNodesInKGroupTest();
+		removeDuplicatesFromSortedArrayTest();
+	}
+	
+	private static void removeDuplicatesFromSortedArrayTest() {
+		int[] A = {1, 2, 4, 1, 8, 2, 3, 4, 6, 1, 9, 0, 1, -1, 2, 3};
+		Arrays.sort(A);
+		System.out.println(Arrays.toString(A));
+		RemoveDuplicatesFromSortedArray test = new RemoveDuplicatesFromSortedArray();
+		int length = test.removeDuplicates(A);
+		System.out.println(Arrays.toString(A));
+		System.out.println("Lengh is: " + length);
 	}
 	
 	private static void reverseNodesInKGroupTest() {
