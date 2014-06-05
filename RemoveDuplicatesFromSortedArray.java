@@ -1,3 +1,8 @@
+import java.util.Arrays;
+
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  * Remove Duplicates from Sorted Array
  * http://oj.leetcode.com/problems/remove-duplicates-from-sorted-array/
@@ -27,4 +32,15 @@ public class RemoveDuplicatesFromSortedArray {
         }
         return loc + 1;
     }
+	
+	@Test
+	public void test() {
+		int[] A = {1, 2, 4, 1, 8, 2, 3, 4, 6, 1, 9, 0, 1, -1, 2, 3};
+		Arrays.sort(A);
+		System.out.println(Arrays.toString(A));
+		RemoveDuplicatesFromSortedArray test = new RemoveDuplicatesFromSortedArray();
+		int length = test.removeDuplicates(A);
+		System.out.println(Arrays.toString(A));
+		Assert.assertTrue("The length is not as expected.", length == 9);
+	}
 }
