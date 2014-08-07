@@ -7,8 +7,9 @@
  */
 public class InsertionSortList {
     public ListNode insertionSortList(ListNode head) {
-        if (head == null || head.next == null)
+        if (head == null || head.next == null) {
             return head;
+        }
         ListNode preHead = new ListNode(Integer.MIN_VALUE);
         preHead.next = head;
         while (head != null && head.next != null) {
