@@ -3,31 +3,24 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- * Merge Intervals
- * Given a collection of intervals, merge all overlapping intervals.
+ * Merge Intervals Given a collection of intervals, merge all overlapping intervals.
  * 
- * For example,
- * Given [1,3],[2,6],[8,10],[15,18],
- * return [1,6],[8,10],[15,18].
+ * For example, Given [1,3],[2,6],[8,10],[15,18], return [1,6],[8,10],[15,18].
  * 
  * @author Josh Luo
  */
 
 /**
- * Definition for an interval.
- * public class Interval {
- *     int start;
- *     int end;
- *     Interval() { start = 0; end = 0; }
- *     Interval(int s, int e) { start = s; end = e; }
- * }
+ * Definition for an interval. public class Interval { int start; int end; Interval() { start = 0; end = 0; }
+ * Interval(int s, int e) { start = s; end = e; } }
  */
 
 public class MergeIntervals {
-	public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
+    public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
         // Note: The Solution object is instantiated only once and is reused by each test case.
-        if(intervals == null || intervals.isEmpty()) return intervals;
-        
+        if (intervals == null || intervals.isEmpty())
+            return intervals;
+
         Comparator<Interval> comparator = new Comparator<Interval>() {
             @Override
             public int compare(Interval i1, Interval i2) {
@@ -61,7 +54,7 @@ public class MergeIntervals {
                 }
             }
         }
-        
+
         return merged;
     }
 }

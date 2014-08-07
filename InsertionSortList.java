@@ -3,7 +3,7 @@
  * 
  * @author joshluo
  * 
- * Answer: Iterating through two list. Try saving time when figuring out which one should be re-ordered.
+ *         Answer: Iterating through two list. Try saving time when figuring out which one should be re-ordered.
  */
 public class InsertionSortList {
     public ListNode insertionSortList(ListNode head) {
