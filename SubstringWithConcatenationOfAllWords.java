@@ -7,11 +7,11 @@ import java.util.Map;
  * You are given a string, S, and a list of words, L, that are all of the same length. Find all starting indices of
  * substring(s) in S that is a concatenation of each word in L exactly once and without any intervening characters.
  * 
- * For example, given: 
- * S: "barfoothefoobarman" 
+ * For example, given:
+ * S: "barfoothefoobarman"
  * L: ["foo", "bar"]
  * 
- * You should return the indices: [0,9]. 
+ * You should return the indices: [0,9].
  * (order does not matter).
  * 
  * @author joshluo
@@ -69,9 +69,9 @@ public class SubstringWithConcatenationOfAllWords {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        SubstringWithConcatenationOfAllWords testClass = new SubstringWithConcatenationOfAllWords();
         String S = "barfoothefoobarman";
         String[] L = { "foo", "bar" };
-        System.out.println(solution.findSubstring(S, L));
+        System.out.println(testClass.findSubstring(S, L));
     }
 }
