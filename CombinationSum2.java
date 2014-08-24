@@ -20,7 +20,7 @@ import java.util.Set;
  * [1, 2, 5]
  * [2, 6]
  * [1, 1, 6]
- * @author tianyil
+ * @author joshluo
  */
 public class CombinationSum2 {
 
