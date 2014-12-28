@@ -37,3 +37,9 @@ screenshots/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+#################
+## Intellij Settings
+#################
+leetcode.eml
+leetcode.iml
