@@ -28,7 +28,23 @@ import java.util.Stack;
  */
 
 public class ReverseInteger {
+
+    /**
+     * An absolutely better and smarter solution. Special thanks to Cassie Yu.
+     */
     public int reverse(int x) {
+        int result = 0;
+        for (; x != 0; x /= 10) {
+            long attemptResult = (long) result * 10 + x % 10;
+            if (attemptResult > Integer.MAX_VALUE || attemptResult < Integer.MIN_VALUE) {
+                return 0;
+            }
+            result = (int) attemptResult;
+        }
+        return result;
+    }
+
+    public int reverse2(int x) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
         if (x == 0)
