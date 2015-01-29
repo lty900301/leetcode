@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Integer to Roman http://oj.leetcode.com/problems/integer-to-roman/
@@ -10,61 +11,40 @@ import java.util.HashMap;
  */
 
 public class IntegerToRoman {
+
     public String intToRoman(int num) {
-        // IMPORTANT: Please reset any member data you declared, as
-        // the same Solution instance will be reused for each test case.
-        if (num < 1 || num > 3999)
-            return null;
+        assert (num > 0);
 
-        // Build the map
-        HashMap<Integer, Character> intToRomanMap = new HashMap<Integer, Character>();
-        intToRomanMap.put(1, 'I');
-        intToRomanMap.put(5, 'V');
-        intToRomanMap.put(10, 'X');
-        intToRomanMap.put(50, 'L');
-        intToRomanMap.put(100, 'C');
-        intToRomanMap.put(500, 'D');
-        intToRomanMap.put(1000, 'M');
-        intToRomanMap.put(5000, '~'); // dummy
+        Map<Integer, String> intToRoman = new HashMap<Integer, String>();
+        intToRoman.put(1, "I");
+        intToRoman.put(5, "V");
+        intToRoman.put(10, "X");
+        intToRoman.put(50, "L");
+        intToRoman.put(100, "C");
+        intToRoman.put(500, "D");
+        intToRoman.put(1000, "M");
 
-        // Transfer
-        StringBuilder sb = new StringBuilder();
-        int largest = 1000;
-        while (num > 0) {
-            int digitValue = num / largest;
-            if (digitValue > 0) {
-                String translated = digitToRoman(digitValue, intToRomanMap.get(largest * 5), intToRomanMap.get(largest));
-                if (translated.isEmpty()) {
-                    sb.append(intToRomanMap.get(largest));
-                    sb.append(intToRomanMap.get(largest * 10));
-                } else {
-                    sb.append(translated);
-                }
+        StringBuilder result = new StringBuilder();
+        for (int i = 1000; i >= 1; i /= 10) {
+            int times = num / i;
+            if (times <= 3) {
+                result.append(numsChar(times, intToRoman.get(i)));
+            } else if (times == 4) {
+                result.append(intToRoman.get(i)).append(intToRoman.get(i * 5));
+            } else if (times >= 5 && times <= 8) {
+                result.append(intToRoman.get(i * 5));
+                result.append(numsChar(times - 5, intToRoman.get(i)));
+            } else if (times == 9) {
+                result.append(intToRoman.get(i)).append(intToRoman.get(i * 10));
+            } else {
+                throw new RuntimeException("not allowed");
             }
-            num -= digitValue * largest;
-            largest /= 10;
+            num %= i;
         }
-        return sb.toString();
+        return result.toString();
     }
 
-    public String digitToRoman(int digitValue, char fiveChar, char c) {
-        StringBuilder sb = new StringBuilder();
-        if (digitValue <= 3) {
-            sb.append(numsChar(digitValue, c));
-        } else if (digitValue == 4) {
-            sb.append(c);
-            sb.append(fiveChar);
-        } else if (digitValue == 5) {
-            sb.append(fiveChar);
-        } else if (digitValue < 9) {
-            sb.append(fiveChar);
-            sb.append(numsChar(digitValue - 5, c));
-        } else {
-        }
-        return sb.toString();
-    }
-
-    public String numsChar(int nums, char c) {
+    public String numsChar(int nums, String c) {
         StringBuilder sb = new StringBuilder();
         while (nums > 0) {
             sb.append(c);
@@ -72,4 +52,5 @@ public class IntegerToRoman {
         }
         return sb.toString();
     }
+
 }
