@@ -16,7 +16,7 @@ public class MaxPointsOnALine {
         for (int i = 0; i < points.length; i++) {
             int x1 = points[i].x, y1 = points[i].y;
             int samePointCount = 1, slopePointCount = 0;
-            ; // itself count as 1
+            // itself count as 1
             Map<Double, Integer> slopeMap = new HashMap<Double, Integer>();
             for (int j = i + 1; j < points.length; j++) {
                 int x2 = points[j].x, y2 = points[j].y;
