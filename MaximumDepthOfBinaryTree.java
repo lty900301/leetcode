@@ -11,30 +11,40 @@ import java.util.Queue;
  */
 public class MaximumDepthOfBinaryTree {
 
-    // BFS
     public int maxDepth(TreeNode root) {
-        int level = 0;
         if (root == null) {
-            return level;
+            return 0;
         }
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        queue.add(root);
-        int toVisit = 1;
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
-            if (node.left != null) {
-                queue.add(node.left);
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
+
+    class MaximumDepthOfBinaryTree_BFS {
+
+        public int maxDepth(TreeNode root) {
+            int level = 0;
+            if (root == null) {
+                return level;
             }
-            if (node.right != null) {
-                queue.add(node.right);
+            Queue<TreeNode> queue = new LinkedList<TreeNode>();
+            queue.add(root);
+            int toVisit = 1;
+            while (!queue.isEmpty()) {
+                TreeNode node = queue.poll();
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+                toVisit--;
+                if (toVisit == 0) {
+                    level++;
+                    toVisit = queue.size();
+                }
             }
-            toVisit--;
-            if (toVisit == 0) {
-                level++;
-                toVisit = queue.size();
-            }
+            return level; // according to the maximum depth definition
         }
-        return level; // according to the maximum depth definition
+
     }
 
 }
