@@ -1,3 +1,4 @@
+
 /**
  * Validate Binary Search Tree http://oj.leetcode.com/problems/validate-binary-search-tree/#
  * 

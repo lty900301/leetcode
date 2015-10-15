@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Longest Consecutive Sequence
@@ -10,36 +11,36 @@ import java.util.*;
  * 
  * Your algorithm should run in O(n) complexity.
  * 
+ * Solution:
+ * Use a hashmap to map a number to its longest consecutive sequence length, each time find a new consecutive sequence,
+ * only the begin number and end number need to be modified.
+ * https://leetcode.com/discuss/25812/o-n-hashmap-java-solution
+ * 
  * @author Josh Luo
  * 
  */
 
 public class LongestConsecutiveSequence {
+
     public int longestConsecutive(int[] num) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        int max = 1;
-        for (int i : num) {
-            if (map.containsKey(i))
+        assert (num != null);
+        int longest = 0;
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>(); // MAP <-> Length
+        for (int i = 0; i < num.length; i++) {
+            if (map.containsKey(num[i]))
                 continue;
-            map.put(i, 1);
-            if (map.containsKey(i - 1)) {
-                max = Math.max(max, merge(map, i - 1, i));
-            }
-            if (map.containsKey(i + 1)) {
-                max = Math.max(max, merge(map, i, i + 1));
-            }
+            map.put(num[i], 1);
+            int end = num[i];
+            int begin = num[i];
+            if (map.containsKey(num[i] + 1))
+                end = num[i] + map.get(num[i] + 1);
+            if (map.containsKey(num[i] - 1))
+                begin = num[i] - map.get(num[i] - 1);
+            longest = Math.max(longest, end - begin + 1);
+            map.put(end, end - begin + 1);
+            map.put(begin, end - begin + 1);
         }
-        return max;
+        return longest;
     }
 
-    private int merge(HashMap<Integer, Integer> map, int left, int right) {
-        int upper = right + map.get(right) - 1;
-        int lower = left - map.get(left) + 1;
-        int len = upper - lower + 1;
-        map.put(upper, len);
-        map.put(lower, len);
-        return len;
-    }
 }
