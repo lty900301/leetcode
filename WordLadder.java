@@ -1,6 +1,8 @@
+import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Set;
+
+import org.junit.Test;
 
 /**
  * Word Ladder http://oj.leetcode.com/problems/word-ladder/
@@ -24,91 +26,54 @@ import java.util.Queue;
 public class WordLadder {
 
     // BFS
-    public int ladderLength(String start, String end, HashSet<String> dict) {
-        // IMPORTANT: Please reset any member data you declared, as
-        // the same Solution instance will be reused for each test case.
-        if (dict == null || dict.size() == 0 || start.length() != end.length())
+    public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
+        if (wordList == null || wordList.size() == 0 || beginWord.length() != endWord.length())
             return 0;
-        if (start.length() == 0 || end.length() == 0)
-            return 1;
+        Set<String> beginSet = new HashSet<String>(), endSet = new HashSet<String>();
+        Set<String> visited = new HashSet<String>();
 
-        HashSet<String> visited = new HashSet<String>();
-        Queue<String> queue = new LinkedList<String>();
-        queue.add(start);
-        int level = 0, currentLevelNodesNum = 1, nextLevelNodesNum = 0;
-        boolean found = false;
-        while (!queue.isEmpty()) {
-            String front = queue.remove();
-            currentLevelNodesNum--;
-            if (front.equals(end)) {
-                level++;
-                found = true;
-                break;
-            }
+        beginSet.add(beginWord);
+        endSet.add(endWord);
 
-            for (int i = 0; i < front.length(); i++) {
-                StringBuffer sb = new StringBuffer(front);
-                for (char c = 'a'; c < 'z'; c++) {
-                    if (sb.charAt(i) == c)
-                        continue;
-                    sb.setCharAt(i, c);
-                    String next = sb.toString();
-                    if (dict.contains(next) && !visited.contains(next)) {
-                        queue.add(next);
-                        visited.add(next);
-                        nextLevelNodesNum++;
+        return ladderLength(wordList, visited, beginSet, endSet, 1);
+    }
+
+    private int ladderLength(Set<String> wordList, Set<String> visited, Set<String> beginSet, Set<String> endSet,
+            int level) {
+        if (beginSet.isEmpty())
+            return 0;
+        if (beginSet.size() > endSet.size())
+            return ladderLength(wordList, visited, endSet, beginSet, level);
+        visited.addAll(beginSet);
+        visited.addAll(endSet);
+        // the set for next level
+        Set<String> set = new HashSet<String>();
+        // for each string in the current level
+        for (String s : beginSet) {
+            for (int i = 0; i < s.length(); i++) {
+                char[] chars = s.toCharArray();
+                // change letter at every position
+                for (char c = 'a'; c <= 'z'; c++) {
+                    chars[i] = c;
+                    String word = new String(chars);
+                    // found the word in other end(set)
+                    if (endSet.contains(word)) {
+                        return level + 1;
+                    }
+                    // if not, add to the next level
+                    if (wordList.contains(word) && !visited.contains(word)) {
+                        set.add(word);
                     }
                 }
             }
-
-            if (currentLevelNodesNum == 0) {
-                level++;
-                currentLevelNodesNum = nextLevelNodesNum;
-                nextLevelNodesNum = 0;
-            }
         }
-        return found ? level : 0;
+        return ladderLength(wordList, visited, set, endSet, level + 1);
     }
 
-    // DFS
-    // exceed time limit
-    // public int ladderLength(String start, String end, HashSet<String> dict) {
-    // // IMPORTANT: Please reset any member data you declared, as
-    // // the same Solution instance will be reused for each test case.
-    // if(dict == null || dict.size() == 0 ||
-    // start.length() != end.length()) return 0;
-    // if(start.length() == 0 || end.length() == 0) return 1;
-    //
-    // int diffNum = 0;
-    // for(int i = 0; i < start.length(); i++) {
-    // if(start.charAt(i) != end.charAt(i)) diffNum++;
-    // }
-    // if(diffNum < 2) return 2;
-    //
-    // HashSet<String> copiedDict = new HashSet<String>();
-    // Iterator<String> iter = dict.iterator();
-    // while(iter.hasNext()){
-    // String copied = iter.next();
-    // copiedDict.add(copied);
-    // }
-    //
-    // int minLen = Integer.MAX_VALUE;
-    // for(int i = 0; i < start.length(); i++) {
-    // for(int j = 0; j < 26; j++){
-    // char replace = (char) ('a' + j);
-    // if(replace == start.charAt(i)) continue;
-    // StringBuilder sb = new StringBuilder();
-    // sb.append(start.substring(0, i));
-    // sb.append(replace);
-    // if(i < (start.length()-1))sb.append(start.substring(i+1, start.length()));
-    // String nextStart = sb.toString();
-    // if(copiedDict.contains(nextStart)){
-    // copiedDict.remove(nextStart);
-    // int nextLength = ladderLength(nextStart, end, copiedDict);
-    // if(nextLength > 0) minLen = Math.min(minLen, nextLength + 1);
-    // }
-    // }
-    // }
-    // return (minLen == Integer.MAX_VALUE) ? 0 : minLen;
-    // }
+    @Test
+    public void test() {
+        Set<String> wordList = new HashSet<>(Arrays.asList("hot", "dog", "dot"));
+        System.out.println(ladderLength("hot", "dog", wordList));
+    }
+
 }
